@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zombies Multiplayer Loader</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+        iframe { width: 100vw; height: 100vh; border: none; }
+    </style>
+</head>
+<body>
+    <!-- Loads the direct map source code natively -->
+    <iframe id="game" src="https://pages.dev"></iframe>
+
+    <script>
+        const iframe = document.getElementById('game');
+        iframe.addEventListener('load', () => {
+            try {
+                const script = iframe.contentWindow.document.createElement('script');
+                script.src = 'https://jsdelivr.net';
+                iframe.contentWindow.document.body.appendChild(script);
+            } catch(e) {
+                console.error("If browser security stops the injection, use the Bookmarklet method instead.");
+            }
+        });
+    </script>
+</body>
+</html>
